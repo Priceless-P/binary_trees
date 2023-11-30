@@ -11,24 +11,15 @@ size_t binary_tree_nodes(const binary_tree_t *tree);
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int is_full, expected_nodes, has_correct_node_count;
-
-	size_t height, node_count;
-
 	if (tree)
 	{
-		is_full = binary_tree_is_full(tree);
-		height = binary_tree_height(tree);
-		node_count = binary_tree_nodes(tree);
-		expected_nodes = (int)(pow(2, height)) - 1;
-		has_correct_node_count = ((int)node_count == expected_nodes);
 
-		return (is_full && has_correct_node_count);
+		return ((binary_tree_is_full(tree) &&
+		(int)binary_tree_nodes(tree) ==
+		((int)(pow(2, binary_tree_height(tree))) - 1)));
 	}
 		return (0);
 }
-
-#include "binary_trees.h"
 
 /**
 * binary_tree_is_full - Checks if a binary tree is full
@@ -50,8 +41,6 @@ int binary_tree_is_full(const binary_tree_t *tree)
 	return (0);
 }
 
-#include "binary_trees.h"
-
 /**
 * binary_tree_nodes - Counts the nodes with at least 1 child in a binary tree
 * @tree: Pointer to the root node of the tree
@@ -68,8 +57,6 @@ size_t binary_tree_nodes(const binary_tree_t *tree)
 	else
 		return (0);
 }
-
-#include "binary_trees.h"
 
 /**
 * binary_tree_height - Measures the height of a binary tree
@@ -88,7 +75,6 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	right_height = tree->right ? 1 + binary_tree_height(tree->right) : 0;
 
 	return ((left_height > right_height ? left_height : right_height));
-
 }
 else
 {
