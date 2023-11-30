@@ -8,14 +8,19 @@
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
+	int is_full, expected_nodes, has_correct_node_count;
+
+	size_t height, node_count;
+
 	if (tree == NULL)
+	{
+		is_full = binary_tree_is_full(tree);
+		height = binary_tree_height(tree);
+		node_count = binary_tree_nodes(tree);
+		expected_nodes = (int)(pow(2, height)) - 1;
+		has_correct_node_count = (node_count == expected_nodes);
+
+		return (is_full && has_correct_node_count);
+	}
 		return (0);
-
-	int is_full = binary_tree_is_full(tree);
-	size_t height = binary_tree_height(tree);
-	size_t node_count = binary_tree_nodes(tree);
-	int expected_nodes = (int)(pow(2, height)) - 1;
-	int has_correct_node_count = (node_count == expected_nodes);
-
-	return (is_full && has_correct_node_count);
 }
