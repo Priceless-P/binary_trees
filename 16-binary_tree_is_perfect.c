@@ -12,7 +12,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 
 	size_t height, node_count;
 
-	if (tree == NULL)
+	if (tree)
 	{
 		is_full = binary_tree_is_full(tree);
 		height = binary_tree_height(tree);
